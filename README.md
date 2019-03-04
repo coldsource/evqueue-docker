@@ -1,4 +1,4 @@
-# Build evQueue docker iamges
+# Build evQueue docker images
 
 This repository provides Dockerfile to build your own evQueue docker images.
 
