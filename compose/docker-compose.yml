@@ -1,0 +1,24 @@
+version: '3.0'
+services:
+    evqueue-core:
+        build:
+            context: ../evqueue-core
+            args:
+                branch: master
+        ports:
+            - "5000:5000"
+            - "5001:5001"
+        environment:
+            mysql_host: mariadb
+            mysql_user: evqueue
+            mysql_password: evqueue
+        depends_on:
+            - mariadb
+    
+    mariadb:
+        image: "mariadb:10.5"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: evqueue
+            MYSQL_USER: evqueue
+            MYSQL_PASSWORD: evqueue
