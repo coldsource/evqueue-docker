@@ -6,10 +6,11 @@ For documentation and binary download, [visit the official website!](http://www.
 
 ## Building
 
-``` 
-docker build evqueue-core
-docker build evqueue-frontend-php
-```
+Please see :
+
+* [compose](compose) for a ready to use environment
+* [evqueue-core](evqueue-core) for the core daemon (you will need a MariaDB database to use)
+* [evqueue-frontend-react](evqueue-frontend-react) for the frontend (requires core daemon)
 
 ### Packages
 
