@@ -31,10 +31,6 @@ COPY evqueue.conf /etc
 RUN groupadd evqueue
 RUN useradd -g evqueue evqueue
 
-# Purge unusged elements
-RUN apt-get remove -y --purge build-essential cmake
-RUN apt-get autoremove -y --purge
-
 # Launch evQueue
 CMD /usr/local/bin/evqueue --config /etc/evqueue.conf --wait-db
 EXPOSE 5000
