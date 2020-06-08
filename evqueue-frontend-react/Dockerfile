@@ -24,7 +24,7 @@ RUN mv htdocs/index.prod.html htdocs/index.html
 FROM debian:buster
 RUN apt-get update
 RUN apt-get install -y apt-utils
-RUN apt-get install -y nginx
+RUN apt-get install -y nginx gettext-base
 
 RUN rm -rf /var/www/html
 COPY --from=buildstage /evqueue-frontend-react/htdocs /var/www/html
