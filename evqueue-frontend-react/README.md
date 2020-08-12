@@ -9,6 +9,6 @@ docker build . --tag evqueue-frontend-react
 ## Building a specific branch
 
 ```
-docker build --build-arg branch=websockets evqueue-core --tag evqueue-frontend-react:3.0
+docker build --build-arg branch=websockets . --tag evqueue-frontend-react:1.0
 ```
 

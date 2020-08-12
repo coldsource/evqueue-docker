@@ -31,6 +31,7 @@ COPY --from=buildstage /evqueue-frontend-react/htdocs /var/www/html
 
 # Nginx configuration
 COPY 01-daemon.conf /etc/nginx/modules-enabled
+COPY evqueue-frontend-react.sh /usr/local/bin
 
-CMD /usr/sbin/nginx
+CMD /usr/local/bin/evqueue-frontend-react.sh
 EXPOSE 80
