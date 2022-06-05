@@ -8,7 +8,7 @@ This Docker composer file provides a full evQueue environment including database
 docker-compose up
 ```
 
-Using a browser, visit : https://localhost
+Using a browser, visit : http://localhost
 
 Login with default: admin / admin
 

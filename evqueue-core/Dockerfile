@@ -1,12 +1,12 @@
 # Stage 1: build
-FROM debian:buster AS buildstage
+FROM debian:bullseye AS buildstage
 ARG branch=master
 
 # Prepare debian
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update
 RUN apt-get install -y apt-utils
-RUN apt-get install -y build-essential cmake git libmariadbclient-dev libgit2-dev libxerces-c-dev libpcre++-dev libzip-dev libwebsockets-dev
+RUN apt-get install -y build-essential cmake git default-libmysqlclient-dev  libgit2-dev libxerces-c-dev libzip-dev libwebsockets-dev
 
 # Clone git repository
 RUN git clone https://github.com/coldsource/evqueue-core.git
@@ -21,9 +21,9 @@ RUN cmake ..
 RUN make
 
 # Stage 2: run
-FROM debian:buster
+FROM debian:bullseye
 RUN apt-get update
-RUN apt-get install -y libmariadb3 libgit2-27 libxerces-c3.2 libpcre++0v5 libpcrecpp0v5 libzip4 libwebsockets8
+RUN apt-get install -y libmariadb3 libgit2-1.1 libxerces-c3.2 libzip4 libwebsockets16
 
 # Prepare systems
 COPY --from=buildstage /evqueue-core/build/evqueue /usr/local/bin
@@ -35,3 +35,4 @@ RUN useradd -g evqueue evqueue
 CMD /usr/local/bin/evqueue --config /etc/evqueue.conf --wait-db
 EXPOSE 5000
 EXPOSE 5001
+EXPOSE 5002

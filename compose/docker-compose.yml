@@ -8,22 +8,20 @@ services:
         ports:
             - "${EVQUEUE_API_PORT}:5000"
             - "${EVQUEUE_WS_PORT}:5001"
+            - "${EVQUEUE_ELOGS_PORT}:5002"
 
         environment:
             mysql_host: mariadb
-            mysql_user: evqueue
-            mysql_password: evqueue
+            mysql_user: root
+            mysql_password: root
         
         depends_on:
             - mariadb
     
     mariadb:
-        image: "mariadb:10.5"
+        image: "mariadb:10.8"
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: evqueue
-            MYSQL_USER: evqueue
-            MYSQL_PASSWORD: evqueue
     
     evqueue-frontend-react:
         build:

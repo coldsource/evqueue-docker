@@ -1,5 +1,5 @@
 # Stage1: build
-FROM debian:buster AS buildstage
+FROM debian:bullseye AS buildstage
 ARG branch=master
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -21,7 +21,7 @@ RUN npm run pack:index
 RUN mv htdocs/index.prod.html htdocs/index.html
 
 # Stage2: run
-FROM debian:buster
+FROM debian:bullseye
 RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get install -y nginx gettext-base
