@@ -32,6 +32,7 @@ The following environement variables can be used to start the containers :
 * **EVQUEUE_HTTP_PORT** : Port used for web interface. Default is 80.
 * **EVQUEUE_API_PORT** : Port used for API. Default is 5000.
 * **EVQUEUE_WS_PORT** : Port used for Websockets. Default is 5001.
+* **EVQUEUE_ELOGS_PORT** : Port used for external logs. Default is 5002.
 
 To use it :
 
